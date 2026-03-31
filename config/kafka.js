@@ -3,7 +3,8 @@ const { Kafka } = require('kafkajs');
 
 const kafka = new Kafka({
   clientId: 'notification-service',
-  brokers: ['localhost:9092'] // This points to our Docker container
+  // Use environment variable, fallback to localhost
+  brokers: [process.env.KAFKA_BROKER || 'localhost:9092'] 
 });
 
 module.exports = kafka;

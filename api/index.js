@@ -26,7 +26,7 @@ async function startServer() {
         ],
       });
 
-      // Respond immediately (Async magic!)
+      // Respond immediately
       res.status(202).json({ 
         status: 'success', 
         message: 'Notification queued for delivery' 
