@@ -18,8 +18,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'nexus-creds', 
                                      passwordVariable: 'NEXUS_PWD', 
-                                     usernameVariable: 'NEXUS_USR')]) {
-                        sh "docker login -u ${NEXUS_USR} -p ${NEXUS_PWD} ${NEXUS_REGISTRY}"
+                                     usernameVariable: 'NEXUS_USER')]) {
+                        sh "docker login -u ${NEXUS_USER} -p ${NEXUS_PWD} ${NEXUS_REGISTRY}"
                     }
                 }
             }
