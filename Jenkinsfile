@@ -31,10 +31,11 @@ pipeline {
                 sh "docker push ${NEXUS_REGISTRY}/${REPO_NAME}/${IMAGE_NAME}:${VERSION}"
             }
         }
-        stage('Deploy to K8s') {
+        stage('Deploy to K8s (Mock)') {
             steps {
-                // Step 6 & 7 from your image: Apply the new image to your cluster
-                sh "kubectl set image deployment/api-deployment api=${NEXUS_REGISTRY}/${REPO_NAME}/${IMAGE_NAME}:${VERSION} -n hpe-devops"
+                echo "Skipping K8s deployment for local testing."
+                echo "Image is ready in Nexus: ${NEXUS_REGISTRY}/${REPO_NAME}/${IMAGE_NAME}:${VERSION}"
+                // sh "kubectl set image ..." // Commented out until college setup
             }
         }
     }
