@@ -16,7 +16,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'nexus-creds', 
+                    withCredentials([usernamePassword(credentialsId: 'nexus-deploy-creds', 
                                      passwordVariable: 'NEXUS_PWD', 
                                      usernameVariable: 'NEXUS_USER')]) {
                         sh "docker login -u ${NEXUS_USER} -p ${NEXUS_PWD} ${NEXUS_REGISTRY}"
