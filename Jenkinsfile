@@ -19,7 +19,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nexus-deploy-creds', 
                                      passwordVariable: 'NEXUS_PWD', 
                                      usernameVariable: 'NEXUS_USER')]) {
-                        sh "docker login -u ${NEXUS_USER} -p ${NEXUS_PWD} ${NEXUS_REGISTRY}"
+                        sh "docker login -u ${NEXUS_USER} --password-stdin ${NEXUS_REGISTRY}"
                     }
                 }
             }
