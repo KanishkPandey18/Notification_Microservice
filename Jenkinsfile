@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        NEXUS_REGISTRY = "192.168.1.52:5000"
+        NEXUS_REGISTRY = "192.168.81.131:5000"
         REPO_NAME = "alumni-app"
         IMAGE_NAME = "notification-service"
         VERSION = "${env.BUILD_NUMBER}"
