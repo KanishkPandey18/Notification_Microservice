@@ -1,8 +1,8 @@
 pipeline {
     agent any 
     environment {
-        NEXUS_REGISTRY = "192.168.1.52:8082"
-        REPO_NAME = "docker-hosted"
+        NEXUS_REGISTRY = "192.168.1.52:5000"
+        REPO_NAME = "alumni-app"
         IMAGE_NAME = "notification-service"
         VERSION = "${env.BUILD_NUMBER}"
     }
@@ -16,7 +16,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'nexus-deploy-creds', 
+                    withCredentials([usernamePassword(credentialsId: 'nexus-creds', 
                                      passwordVariable: 'NEXUS_PWD', 
                                      usernameVariable: 'NEXUS_USER')]) {
                         sh "echo ${NEXUS_PWD} | docker login -u ${NEXUS_USER} --password-stdin ${NEXUS_REGISTRY}"
